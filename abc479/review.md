@@ -7,9 +7,9 @@
 
 | 問題 | 配点 | diff | 結果 | AC 時刻 | 不正解 | アルゴリズム |
 |---|---|---|---|---|---|---|
-| A Odd Index Sum | 100 | -995 | AC | 1.5 分 | 0 | 算術 |
-| B Longest Rainy Streak | 200 | -593 | AC | 6.1 分 | 0 | ランレングス圧縮 |
-| C Bento Packing | 300 | 251 | AC | 10.3 分 | 0 | 全探索:bit全探索 |
+| A Odd Index Sum | 100 | 12 | AC | 1.5 分 | 0 | 算術 |
+| B Longest Rainy Streak | 200 | 33 | AC | 6.1 分 | 0 | ランレングス圧縮 |
+| C Bento Packing | 300 | 276 | AC | 10.3 分 | 0 | 全探索:bit全探索 |
 | D Back and Forth Distance | 400 | 563 | AC | 24.2 分 | 0 | 最初の一手で場合分け、累積 min |
 | E Cut and Add | 450 | 1000 | 着手・未提出 | - | - | 木の重心 / 公式: 部分木への加算を根から流す |
 | F Narrow Passage | 500 | 1938 | 未着手 | - | - | 公式: 転倒数、フェニック木 |

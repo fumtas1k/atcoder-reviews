@@ -7,8 +7,8 @@
 
 | 問題 | 配点 | diff | 結果 | AC 時刻 | 不正解 | アルゴリズム |
 |---|---|---|---|---|---|---|
-| A ADjacent | 100 | -569 | AC | 3.4 分 | 0 | 場合分け |
-| B Invalid Vote | 200 | 124 | AC | 29.0 分 | 1 | 全探索:全列挙 |
+| A ADjacent | 100 | 35 | AC | 3.4 分 | 0 | 場合分け |
+| B Invalid Vote | 200 | 201 | AC | 29.0 分 | 1 | 全探索:全列挙 |
 | C Self-Stopping Shower | 300 | 625 | AC | 55.7 分 | 2 | 貪欲法（隙間ごとに数える） / 公式の別案: 座標圧縮、いもす法 |
 | D Concatenation of Prefixes | 400 | 864 | AC | 86.7 分 | 0 | 累積和、二分探索（公式と同じ） |
 | E Product-Bounded Arithmetic Sequences | 450 | 1355 | 着手・未提出 | - | - | 公式: 全探索:全列挙、二分探索、上界を示して全探索 |
