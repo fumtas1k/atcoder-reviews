@@ -4,6 +4,7 @@
 
 | コンテスト | 結果 | 順位 | パフォーマンス | レート |
 |---|---|---|---|---|
+| [AtCoder Beginner Contest 483](abc483/review.md) | 3 完（A〜C、96.0 分、不正解 2） | 4374 位 | 813 | 1099 → 1073 |
 | [AtCoder Beginner Contest 482](abc482/review.md) | 4 完（A〜D、50.1 分） | 1620 位 | 1260 | 1079 → 1099 |
 | [SMBC Programming Contest #2 (AtCoder Beginner Contest 481）](abc481/review.md) | 4 完（A〜D、27.2 分、不正解 1） | 2874 位 | 1073 | 1080 → 1079 |
 | [AtCoder Beginner Contest 480](abc480/review.md) | 4 完（A〜D、86 分 42 秒、不正解 3） | 3399 位 | 1063 | 1082 → 1080 |
