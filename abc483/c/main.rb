@@ -1,7 +1,7 @@
 # -
 # ABC483/C
-# 優先度付きキュー（古い要素は取り出し時に捨てる）
-# 差分に注目する（公式: 元の上位 2 人と票が増えた人だけ比べる）
+# 差分に注目する
+# 元の上位 2 人と票が増えた人だけ比べる
 
 require "set"
 require "rbtree"
@@ -43,47 +43,21 @@ INF = 1 << 60
 
 N, M = gets.split.map(&:to_i)
 AB = Array.new(M) { gets.split.map(&:to_i).map(&:pred) }
-first = [0] * N
-second = Array.new(N) { Hash.new(0) }
+votes = [0] * N
+moved = Array.new(N) { Hash.new(0) }
 
 AB.each do |a, b|
-  first[a] += 1
-  second[a][b] += 1
-end
-pt = PriorityQueue.new do |a, b|
-  av, ai, ac = a
-  bv, bi, bc = b
-  if av > bv
-    true
-  elsif av == bv
-    ai < bi
-  else
-    false
-  end
+  votes[a] += 1
+  moved[a][b] += 1
 end
 
-first.each_with_index do |v, i|
-  pt << [v, i, INF]
-end
+# [得票数, 番号] の組を、票の多い順・番号の小さい順に並べる比較キー
+rank = ->((v, k)) { [-v, k] }
+top2 = votes.each_with_index.min_by(2, &rank)
 
-ans = []
-N.times do |i|
-  second[i].each do |k, v|
-    pt << [first[k] + v, k, i]
-  end
-
-  buf = []
-  until pt.empty?
-    v, idx, cnt = pt.pop
-    next if cnt < i
-    buf << [v, idx, cnt] if cnt > i
-    if idx != i
-      ans << idx + 1
-      break
-    end
-  end
-
-  buf.each { pt << it }
+ans = Array.new(N) do |i|
+  cands = top2.reject { |_, k| k == i } + moved[i].map { |k, v| [votes[k] + v, k] }
+  cands.min_by(&rank)[1] + 1
 end
 
 puts ans
