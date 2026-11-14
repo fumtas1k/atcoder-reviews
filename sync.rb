@@ -12,10 +12,13 @@ contests.each do |id|
          "#{SRC}/#{id}/", "#{DST}/#{id}/", exception: true)
 end
 
-# 「4 完（…） / 暫定 2762 位 / rated / パフォーマンス 1302 / レート 1053 → 1080」を列に分ける
+# 「4 完（…） / 暫定 2762 位 / rated / パフォーマンス 1302 / レート 1053 → 1080」や
+# 「2 完（…） / 8501 位 / unrated 参加」を列に分ける
 def result_columns(line)
   solved, *rest = line.split(" / ").map(&:strip)
   place = rest.find { it.include?("位") }
+  # unrated 参加はパフォーマンスもレート変化も出ないので、「未確定」ではなく unrated と書く
+  return [solved, place, "unrated", "unrated"].map { it || "-" } if rest.any? { it.start_with?("unrated") }
   perf = rest.find { it.start_with?("パフォーマンス") }&.delete_prefix("パフォーマンス ")
   rating = rest.find { it.start_with?("レート") }&.delete_prefix("レート ")
   rating ||= rest.find { it.start_with?("参加前レート") }&.then { "#{it.delete_prefix("参加前レート ")} → 未確定" }

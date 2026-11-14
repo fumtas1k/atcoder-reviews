@@ -35,3 +35,22 @@ end
 # MOD = 998244353
 MOD = 10 ** 9 + 7
 INF = 1 << 60
+
+N, L, R = gets.split.map(&:to_i)
+A = gets.split.map(&:to_i)
+
+csum = A.reduce([0]) {|acc, a| acc << acc[-1] + a }
+sorted = csum.sort.uniq
+idxes = sorted.map.with_index.to_h
+cnts = FenwickTree.new(sorted.size)
+ans = 0
+(0 .. N).each do |i|
+  sum = csum[i]
+  idx = idxes[sum]
+  l = sorted.bsearch_index { it >= sum - R }
+  r = (sorted.bsearch_index { it > sum - L } || sorted.size) - 1
+  ans += cnts.sum(l, r + 1) if l && l <= r
+  cnts.add(idx, 1)
+end
+
+puts ans
